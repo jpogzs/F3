@@ -36,25 +36,25 @@ LoadFileInfo:
 ;    Goto LoadFileInfo
 
 
-Gui, Font, s10, Courier
-Gui, Add, Text,, %name%
-Gui, Add, Text,section, Roof     : %roof%
-Gui, Add, Text,, Pens     : %pens%
-Gui, Add, Text,, 3D-Pens  : %iapens%
-If (iapens>0)
+Gui, Font, s10, Consolas
+Gui, Add, Edit, ReadOnly -E0x200, %name%
+Gui, Add, Edit, ReadOnly -E0x200 section, Roof     : %roof%
+Gui, Add, Edit, ReadOnly -E0x200, Pens     : %pens%
+Gui, Add, Edit, ReadOnly -E0x200, 3D-Pen   : %iapens%
+If (iapens>=1)
 	wall := 0
-Gui, Add, Text,, Walls    : %wall%
-Gui, Add, Text,, FootPrint: %footprint%
-Gui, Add, Text,, Soffits  : %soffits%
-Gui, Add, Text,, Stamps   : %stamps%
-Gui, Add, Text,, SOM      : %som%
+Gui, Add, Edit, ReadOnly -E0x200, Walls    : %wall%
+Gui, Add, Edit, ReadOnly -E0x200, FootPrint: %footprint%
+Gui, Add, Edit, ReadOnly -E0x200, Soffits  : %soffits%
+Gui, Add, Edit, ReadOnly -E0x200, Stamps   : %stamps%
+Gui, Add, Edit, ReadOnly -E0x200, SOM      : %som%
 total := roof+pens+iapens+wall+footprint+soffits+stamps+som
 Gui, Add, Text,, ---------------
-Gui, Add, Text,, Total    : %total%
+Gui, Add, Edit, ReadOnly -E0x200, Total    : %total%
 fhistory1 := StrReplace(history, "'", "")
 fhistory2 := StrReplace(fhistory1, "[", "")
 fhistory3 := StrReplace(fhistory2, "]", "`n")
-Gui, Add, Edit, ys r20 w380 readonly, %fhistory3%
+Gui, Add, Edit, ys r18 w380 ReadOnly, %fhistory3%
 Gui, +LastFound
 Gui, Show,, F3
 ControlSend, Edit1, {End}
